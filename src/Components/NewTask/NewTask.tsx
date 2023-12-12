@@ -30,7 +30,7 @@ export default function NewTask({
   function handleInpChange(e: InpTextArChangeEvType) {
     const inpName = e.target.name;
     const { value } = e.target;
-    if (value.length > 30)
+    if (value.length > 30 && inpName === "taskTitle")
       setInpError({
         ...inpError,
         [inpName]: {
@@ -48,6 +48,7 @@ export default function NewTask({
 
   function submitDataValidation(inpVal: InpValT) {
     for (const [key, value] of Object.entries(inpVal)) {
+      if (inpError[key].error) return false;
       if (!value) {
         setInpError({
           ...inpError,

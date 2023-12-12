@@ -8,8 +8,8 @@ export type TaskT = {
 };
 
 export type InpErrorT = {
-  taskTitle: { error: boolean; errMsg: string };
-  desc: { error: boolean; errMsg: string };
+  [taskTitle: string]: { error: boolean; errMsg: string };
+  [desc: string]: { error: boolean; errMsg: string };
 };
 export type InpValT = {
   taskTitle: string;

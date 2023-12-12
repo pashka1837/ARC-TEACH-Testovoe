@@ -4,7 +4,6 @@ import {
   CardContent,
   Radio,
   RadioGroup,
-  Stack,
   Typography,
 } from "@mui/joy";
 import { InpTextArChangeEvType, TaskT, colorsT } from "../../types/types";
@@ -14,7 +13,7 @@ import { updateTask } from "../../feature/toDoApp/toDoSLice";
 
 export default function SingleTask({ id, title, desc, status }: TaskT) {
   const dispatch = useAppDispatch();
-  const colors: colorsT = {
+  const statuses: colorsT = {
     "In progress": "primary",
     Done: "success",
     Pending: "warning",
@@ -25,16 +24,18 @@ export default function SingleTask({ id, title, desc, status }: TaskT) {
     dispatch(updateTask({ id, status: newStatus }));
   }
   return (
-    <Card variant="outlined" sx={{ width: 420 }}>
+    <Card variant="outlined" sx={{ width: 280 }}>
       <CardContent>
         <div className="task_card_title">
           <Typography level="title-lg">{title}</Typography>
-          <Typography sx={{ color: `${colors[status]}.400` }} level="body-xs">
+          <Typography sx={{ color: `${statuses[status]}.400` }} level="body-xs">
             {status}
           </Typography>
         </div>
 
-        <Typography level="body-md">{desc}</Typography>
+        <Typography className="single_card_desc" level="body-md">
+          {desc}
+        </Typography>
       </CardContent>
       <CardActions>
         <RadioGroup
@@ -42,14 +43,14 @@ export default function SingleTask({ id, title, desc, status }: TaskT) {
           onChange={handleStatusChange}
           className="task_radio_group"
         >
-          {Object.entries(colors).map((color) => (
+          {Object.entries(statuses).map((stat: string[]) => (
             <Radio
               size="sm"
-              key={color[0]}
-              color={color[1]}
-              value={color[0]}
-              label={color[0]}
-              checked={color[0] === status}
+              key={stat.at(0)}
+              color={stat.at(1)}
+              value={stat.at(0)}
+              label={stat.at(0)}
+              checked={stat.at(0) === status}
             />
           ))}
         </RadioGroup>

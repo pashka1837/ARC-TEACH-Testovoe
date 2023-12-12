@@ -1,7 +1,13 @@
 .task_card_title {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 15px;
   justify-content: space-between;
+  word-break: break-word;
+}
+
+.single_card_desc {
+  word-break: break-word;
 }
 
 .task_radio_group {
