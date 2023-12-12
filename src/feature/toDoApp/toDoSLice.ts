@@ -1,13 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../store/store";
+import { TaskT } from "../../types/types";
 
-type TaskT = {
-  id: string;
-  name: string;
-  desc: string;
-  status: string;
-};
 interface CounterState {
   tasks: TaskT[];
   filter: string;
@@ -25,6 +20,7 @@ export const toDoSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action: PayloadAction<TaskT>) => {
+      console.log(action.payload);
       state.tasks = [...state.tasks, action.payload];
     },
     updateTask: (
