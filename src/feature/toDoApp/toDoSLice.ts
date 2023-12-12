@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../../store/store";
 import { TaskT } from "../../types/types";
 
 interface CounterState {
@@ -45,7 +44,5 @@ export const toDoSlice = createSlice({
 
 export const { addTask, updateTask, updateFilter, updateCounter } =
   toDoSlice.actions;
-
-// export const selectCount = (state: RootState) => state.counter.value;
 
 export default toDoSlice.reducer;

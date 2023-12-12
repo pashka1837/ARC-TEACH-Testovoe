@@ -2,13 +2,18 @@ import { Sheet, Typography } from "@mui/joy";
 import { useAppSelector } from "../../hooks/reduxHooks";
 import SingleTask from "../SingleTask/SingleTask";
 import "./TaskList.scss";
+import { statuses } from "../MyRadioGroup/MyRadioGroup";
 
 export default function TaskList() {
   const { tasks, filter } = useAppSelector((store) => store.toDoSlice);
   const tasksAr =
     filter === "None" ? tasks : tasks.filter((task) => task.status === filter);
   return (
-    <Sheet className="taskList_container" variant="outlined">
+    <Sheet
+      className="taskList_container"
+      variant="outlined"
+      color={statuses[filter] || "neutral"}
+    >
       {tasks.length ? (
         tasksAr.map((task) => <SingleTask key={task.id} {...task} />)
       ) : (

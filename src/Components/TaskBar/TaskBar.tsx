@@ -22,15 +22,16 @@ export default function TaskBar({
   }
   return (
     <Sheet className="task_bar_container" color="primary" variant="soft">
+      <Button className="add_task_btn" onClick={() => setOpen(true)}>
+        Add Task
+      </Button>
       <div className="done_tasks_container">
         <Typography level="title-sm">
           Done tasks:{" "}
           <span className="doneTasksCounter">{doneTasksCounter}</span>
         </Typography>
       </div>
-      <Button className="add_task_btn" onClick={() => setOpen(true)}>
-        Add Task
-      </Button>
+
       <div className="task_bar_filter">
         <Typography level="title-sm">Filter by: </Typography>
         <div>

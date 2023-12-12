@@ -13,7 +13,7 @@ export default function SingleTask({ id, title, desc, status }: TaskT) {
     dispatch(updateTask({ id, status: newStatus }));
   }
   return (
-    <Card variant="outlined" sx={{ width: 280 }}>
+    <Card variant="outlined" sx={{ width: 280 }} color={statuses[status]}>
       <CardContent>
         <div className="task_card_title">
           <Typography level="title-lg">{title}</Typography>
