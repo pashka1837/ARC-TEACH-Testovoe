@@ -29,3 +29,7 @@ export type newTaskInpPropsT = {
     (args: InpTextArChangeEvType): void;
   };
 };
+
+export type colorsT = {
+  [arg: string]: string;
+};

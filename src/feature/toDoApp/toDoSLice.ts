@@ -28,6 +28,7 @@ export const toDoSlice = createSlice({
       action: PayloadAction<{ id: TaskT["id"]; status: string }>
     ) => {
       const { id, status } = action.payload;
+      console.log(id, status);
       const curTask = state.tasks.find((task) => task.id === id);
       curTask!.status = status;
       toDoSlice.actions.updateCounter();
