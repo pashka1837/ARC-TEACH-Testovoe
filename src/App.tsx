@@ -10,8 +10,7 @@ function App() {
 
   return (
     <main>
-      <TaskBar />
-      <Button onClick={() => setNewTaskOpen(true)}>Add Task</Button>
+      <TaskBar setOpen={setNewTaskOpen} />
       {isNewTaskOpen && <NewTask setOpen={setNewTaskOpen} />}
       <TaskList />
     </main>

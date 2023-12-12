@@ -9,7 +9,6 @@ export type TaskT = {
 
 export type InpErrorT = {
   [taskTitle: string]: { error: boolean; errMsg: string };
-  [desc: string]: { error: boolean; errMsg: string };
 };
 export type InpValT = {
   taskTitle: string;
@@ -22,12 +21,16 @@ export type InpTextArChangeEvType = ChangeEvent<
 
 export type FormEvType = FormEvent<HTMLFormElement>;
 
+type handleInpChangeFuncT = (args: InpTextArChangeEvType) => void;
+
 export type newTaskInpPropsT = {
   inpVal: InpValT;
   inpError: InpErrorT;
-  handleInpChange: {
-    (args: InpTextArChangeEvType): void;
-  };
+  handleInpChange: handleInpChangeFuncT;
+};
+export type myRadioGroupPropsT = {
+  status: string;
+  handleStatusChange: handleInpChangeFuncT;
 };
 
 export type colorsT = {

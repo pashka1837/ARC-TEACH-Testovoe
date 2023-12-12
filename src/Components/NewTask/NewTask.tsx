@@ -1,6 +1,6 @@
 import { Button, Sheet, Typography } from "@mui/joy";
 import "./NewTask.scss";
-import { Dispatch, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { nanoid } from "nanoid";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { addTask } from "../../feature/toDoApp/toDoSLice";
@@ -18,7 +18,7 @@ import DescrInput from "./DescrInput";
 export default function NewTask({
   setOpen,
 }: {
-  setOpen: Dispatch<React.SetStateAction<boolean>>;
+  setOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   const [inpVal, setInpVal] = useState<InpValT>({ taskTitle: "", desc: "" });
   const [inpError, setInpError] = useState<InpErrorT>({

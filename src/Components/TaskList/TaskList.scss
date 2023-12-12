@@ -1,5 +1,9 @@
 .taskList_container {
   width: 100%;
+  min-width: 300px;
+  margin-top: 30px;
+  padding: 5% 0;
+  border-radius: 10px;
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

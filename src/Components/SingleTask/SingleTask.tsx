@@ -1,23 +1,12 @@
-import {
-  Card,
-  CardActions,
-  CardContent,
-  Radio,
-  RadioGroup,
-  Typography,
-} from "@mui/joy";
-import { InpTextArChangeEvType, TaskT, colorsT } from "../../types/types";
+import { Card, CardActions, CardContent, Typography } from "@mui/joy";
+import { InpTextArChangeEvType, TaskT } from "../../types/types";
 import "./SingleTask.scss";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { updateTask } from "../../feature/toDoApp/toDoSLice";
+import MyRadioGroup, { statuses } from "../MyRadioGroup/MyRadioGroup";
 
 export default function SingleTask({ id, title, desc, status }: TaskT) {
   const dispatch = useAppDispatch();
-  const statuses: colorsT = {
-    "In progress": "primary",
-    Done: "success",
-    Pending: "warning",
-  };
 
   function handleStatusChange(e: InpTextArChangeEvType) {
     const newStatus = e.target.value;
@@ -32,28 +21,12 @@ export default function SingleTask({ id, title, desc, status }: TaskT) {
             {status}
           </Typography>
         </div>
-
         <Typography className="single_card_desc" level="body-md">
           {desc}
         </Typography>
       </CardContent>
       <CardActions>
-        <RadioGroup
-          value={status}
-          onChange={handleStatusChange}
-          className="task_radio_group"
-        >
-          {Object.entries(statuses).map((stat: string[]) => (
-            <Radio
-              size="sm"
-              key={stat.at(0)}
-              color={stat.at(1)}
-              value={stat.at(0)}
-              label={stat.at(0)}
-              checked={stat.at(0) === status}
-            />
-          ))}
-        </RadioGroup>
+        <MyRadioGroup status={status} handleStatusChange={handleStatusChange} />
       </CardActions>
     </Card>
   );

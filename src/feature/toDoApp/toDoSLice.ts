@@ -11,7 +11,7 @@ interface CounterState {
 
 const initialState: CounterState = {
   tasks: [],
-  filter: "",
+  filter: "None",
   doneTasksCounter: 0,
 };
 
@@ -31,14 +31,14 @@ export const toDoSlice = createSlice({
       console.log(id, status);
       const curTask = state.tasks.find((task) => task.id === id);
       curTask!.status = status;
-      toDoSlice.actions.updateCounter();
+      toDoSlice.caseReducers.updateCounter(state);
     },
     updateFilter: (state, action: PayloadAction<string>) => {
       state.filter = action.payload;
     },
     updateCounter: (state) => {
-      const doneTasks = state.tasks.filter((task) => task.status === "done");
-      state.doneTasksCounter = doneTasks?.length || 0;
+      const doneTasks = state.tasks.filter((task) => task.status === "Done");
+      state.doneTasksCounter = doneTasks?.length;
     },
   },
 });

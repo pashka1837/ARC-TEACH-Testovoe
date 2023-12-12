@@ -1,7 +1,32 @@
 .task_bar_container {
-  padding: 2%;
+  padding: 2% 5%;
   height: 80px;
   border-radius: 10px;
   display: grid;
   align-items: center;
+  grid-template-columns: 1fr 1fr 2fr;
+}
+
+.doneTasksCounter {
+  font-size: 1rem;
+}
+
+.add_task_btn {
+  width: 100px;
+}
+
+.task_bar_filter {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 20px;
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    span {
+      margin: 0;
+    }
+  }
 }
