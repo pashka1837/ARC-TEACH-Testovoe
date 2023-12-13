@@ -18,8 +18,6 @@ export default function TaskBar({
   const [postDoneTasks, { error }] = usePostDoneTasksMutation();
   const [noTasksError, setNoTasksError] = useState("");
 
-  console.log(error);
-
   function handleFilterChange(filterName: string, filtValue: boolean) {
     dispatch(updateFilter({ filterName, value: !filtValue }));
   }
@@ -28,7 +26,6 @@ export default function TaskBar({
     const doneTasksNameAr = tasks
       .filter((task) => task.status === "Done")
       .map((task) => ({ title: task.title, id: task.id }));
-    console.log(doneTasksNameAr);
     if (doneTasksNameAr.length) {
       setNoTasksError("");
       postDoneTasks(doneTasksNameAr);
