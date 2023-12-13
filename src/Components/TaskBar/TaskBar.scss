@@ -4,8 +4,11 @@
   border-radius: 10px;
   display: grid;
   align-items: center;
-  justify-items: center;
+  // justify-items: center;
+  justify-items: start;
+
   grid-template-columns: 1fr 1fr 3fr;
+  // grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .doneTasksCounter {
@@ -29,5 +32,25 @@
     span {
       margin: 0;
     }
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .task_bar_container {
+    height: auto;
+    justify-items: center;
+    gap: 20px;
+    grid-template-columns: auto auto;
+  }
+  .task_bar_filter {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .task_bar_filter {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
