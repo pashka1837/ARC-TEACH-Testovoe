@@ -3,7 +3,7 @@ import { InpTextArChangeEvType, TaskT } from "../../types/types";
 import "./SingleTask.scss";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { updateTask } from "../../feature/toDoApp/toDoSLice";
-import MyRadioGroup, { statuses } from "../MyRadioGroup/MyRadioGroup";
+import MyRadioGroup, { colors } from "../MyRadioGroup/MyRadioGroup";
 
 export default function SingleTask({ id, title, desc, status }: TaskT) {
   const dispatch = useAppDispatch();
@@ -13,11 +13,11 @@ export default function SingleTask({ id, title, desc, status }: TaskT) {
     dispatch(updateTask({ id, status: newStatus }));
   }
   return (
-    <Card variant="outlined" sx={{ width: 280 }} color={statuses[status]}>
+    <Card variant="outlined" sx={{ width: 280 }} color={colors[status]}>
       <CardContent>
         <div className="task_card_title">
           <Typography level="title-lg">{title}</Typography>
-          <Typography sx={{ color: `${statuses[status]}.400` }} level="body-xs">
+          <Typography sx={{ color: `${colors[status]}.400` }} level="body-xs">
             {status}
           </Typography>
         </div>

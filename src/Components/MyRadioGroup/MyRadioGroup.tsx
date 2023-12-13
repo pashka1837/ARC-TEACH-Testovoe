@@ -2,7 +2,7 @@ import { Radio, RadioGroup } from "@mui/joy";
 import { colorsT, myRadioGroupPropsT } from "../../types/types";
 import "./MyRadioGroup.scss";
 
-export const statuses: colorsT = {
+export const colors: colorsT = {
   "In progress": "primary",
   Done: "success",
   Pending: "warning",
@@ -18,7 +18,7 @@ export default function MyRadioGroup({
       onChange={handleStatusChange}
       className="task_radio_group"
     >
-      {Object.entries(statuses).map((stat: string[]) => (
+      {Object.entries(colors).map((stat: string[]) => (
         <Radio
           size="sm"
           key={stat.at(0)}

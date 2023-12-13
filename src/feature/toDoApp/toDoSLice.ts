@@ -4,13 +4,21 @@ import { TaskT } from "../../types/types";
 
 interface CounterState {
   tasks: TaskT[];
-  filter: string;
+  filter: {
+    [key: string]: boolean;
+    Done: boolean;
+    Pending: boolean;
+  };
   doneTasksCounter: number;
 }
 
 const initialState: CounterState = {
   tasks: [],
-  filter: "None",
+  filter: {
+    "In progress": false,
+    Done: false,
+    Pending: false,
+  },
   doneTasksCounter: 0,
 };
 
@@ -19,21 +27,23 @@ export const toDoSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action: PayloadAction<TaskT>) => {
-      console.log(action.payload);
-      state.tasks = [...state.tasks, action.payload];
+      state.tasks.push(action.payload);
     },
     updateTask: (
       state,
       action: PayloadAction<{ id: TaskT["id"]; status: string }>
     ) => {
       const { id, status } = action.payload;
-      console.log(id, status);
       const curTask = state.tasks.find((task) => task.id === id);
       curTask!.status = status;
       toDoSlice.caseReducers.updateCounter(state);
     },
-    updateFilter: (state, action: PayloadAction<string>) => {
-      state.filter = action.payload;
+    updateFilter: (
+      state,
+      action: PayloadAction<{ value: boolean; filterName: string }>
+    ) => {
+      const { value, filterName } = action.payload;
+      state.filter[filterName] = value;
     },
     updateCounter: (state) => {
       const doneTasks = state.tasks.filter((task) => task.status === "Done");
